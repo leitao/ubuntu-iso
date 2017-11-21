@@ -74,10 +74,6 @@ sudo cp $DI/build/dest/hwe-cdrom/initrd.gz $ISO/install/hwe-initrd.gz
 sudo cp $DI/build/dest/hwe-netboot/ubuntu-installer/ppc64el/initrd.gz $ISO/install
 sudo cp $DI/build/dest/hwe-netboot/ubuntu-installer/ppc64el/initrd.gz $ISO/install/hwe-netboot/ubuntu-installer/ppc64el/initrd.gz
 
-# Copying twice?
-#sudo cp $DI/build/tmp/hwe-cdrom/vmlinux $ISO/install/hwe-netboot/ubuntu-installer/ppc64el
-#sudo cp $DI/build/tmp/hwe-cdrom/initrd.gz $ISO/install/hwe-netboot/ubuntu-installer/ppc64el
-
 # Running ftparchive
 cd $OPT/apt-ftparchive
 sudo ./build_repo.sh
