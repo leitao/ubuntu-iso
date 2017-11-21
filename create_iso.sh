@@ -20,6 +20,7 @@
 # set if you wish to rebuild DI often
 export DIBUILD 
 
+# Directory and files configuration
 OPT=/opt
 ISO=$OPT/cd-image
 OLDISO=$OPT/old/iso_orig/iso
@@ -27,8 +28,10 @@ KEYRING=$OPT/build/keyring
 DI=$OPT/build/di/debian-installer-20101020ubuntu451.16
 META=$OPT/build/meta
 KERNEL=$OPT/kernel
-MYKEY=FC78776D
+OUTPUT=test.iso
 
+# GPG key configuration
+MYKEY=FC78776D
 
 set -e
 
@@ -101,7 +104,7 @@ sudo gpg --armor --detach-sign -o filesystem.squashfs.gpg filesystem.squashfs
 
 # Generate the ISO
 cd $OPT
-sudo rm -fr test.iso
-sudo grub-mkrescue --output=test.iso $ISO/
+sudo rm -fr $OUTPUT
+sudo grub-mkrescue --output=$OUTPUT $ISO/
 
-scp test.iso brenohl@10.1.0.1:/home/brenohl/iso
+#scp test.iso brenohl@10.1.0.1:/home/brenohl/iso
