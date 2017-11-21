@@ -17,7 +17,9 @@
 # The new DI recompiled with the new kernel should be at $DI
 # and the new kernel packages should be a $kernel
 
+# set if you wish to rebuild DI often
 export DIBUILD 
+
 OPT=/opt
 ISO=$OPT/cd-image
 OLDISO=$OPT/old/iso_orig/iso
@@ -25,6 +27,8 @@ KEYRING=$OPT/build/keyring
 DI=$OPT/build/di/debian-installer-20101020ubuntu451.16
 META=$OPT/build/meta
 KERNEL=$OPT/kernel
+MYKEY=FC78776D
+
 
 set -e
 
@@ -43,7 +47,7 @@ sudo cp $META/*deb $ISO/pool/main/l/linux-meta-hwe
 
 # Update keyring
 cd $KEYRING/*/
-gpg --export FBB75451 437D05B5 C0B21F32 EFE21092 FC78776D  > ubuntu-archive-keyring.gpg
+gpg --export FBB75451 437D05B5 C0B21F32 EFE21092 $MYKEY  > ubuntu-archive-keyring.gpg
 dpkg-buildpackage -rfakeroot -m"Breno Leitao <breno.leitao@gmail.com>" -kFC78776D
 
 sudo rm -fr $ISO/pool/main/u/ubuntu-keyring/*
